@@ -1,139 +1,153 @@
-/* Background */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #111;
-  color: white;
+/* Whole game container (phone frame) */
+.game-container {
+  width: 400px;
+  height: 700px;
+  margin: 20px auto;
+  border: 3px solid #0a0a0a;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #1e1e2e, #121212);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  padding: 15px;
+}
+
+/* Title */
+.title {
+  color: #fff;
+  font-size: 28px;
+  margin-top: 10px;
   text-align: center;
 }
 
-/* Meat Counter */
+/* Meat counter */
 .counter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 26px;
+  color: #fff;
+  font-size: 40px;
   font-weight: bold;
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
-.meat-icon {
-  margin-right: 8px;
-  font-size: 28px;
-}
-
-.meat-count {
-  color: gold;
-  text-shadow: 0 0 8px yellow;
-}
-
-/* Wolf Tap Button */
-.wolf-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
+/* Wolf button container */
 .tap-button {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #ffcc00, #ff6600);
   border-radius: 50%;
-  background: radial-gradient(circle, #000 70%, #222);
-  box-shadow: 0 0 20px gold;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.6);
+  user-select: none;   /* prevent selection */
 }
 
-.tap-button:hover {
-  transform: scale(1.05);
+.tap-button:active {
+  transform: scale(0.9);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* Wolf image */
 .wolf {
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  object-fit: cover;
+  user-select: none;   /* disable selection */
+  pointer-events: none; /* stop blue highlight */
 }
 
+
+/* Tap text */
 .tap-text {
   margin-top: 10px;
-  font-weight: bold;
-  color: cyan;
   font-size: 18px;
+  color: #ddd;
+  text-align: center;
 }
 
-/* Section Buttons */
+/* Buttons below */
 .button-container {
-  margin-top: 20px;
   display: flex;
-  justify-content: center;
   gap: 15px;
+  margin-bottom: 20px;
 }
 
 .section-button {
-  padding: 12px 22px;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 12px 18px;
   border: none;
   border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
-  color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: 0.3s ease;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
 }
 
 .section-button.daily {
-  background: linear-gradient(145deg, #ff4444, #ff8888);
+  background: #4caf50;
+  color: white;
+}
+
+.section-button.daily:hover {
+  background: #45a049;
 }
 
 .section-button.social {
-  background: linear-gradient(145deg, #00c6ff, #0072ff);
+  background: #2196f3;
+  color: white;
 }
 
-/* Popup Styles */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.section-button.social:hover {
+  background: #1e87e5;
 }
 
-.popup-content {
+/* Task panels */
+.panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 350px;
   background: #222;
   padding: 20px;
-  border-radius: 16px;
+  border-radius: 15px;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7);
+  color: #fff;
+  z-index: 1000;
   text-align: center;
-  width: 300px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
-.popup-content h2 {
+.panel h2 {
   margin-bottom: 15px;
 }
 
-.popup-content ul {
+.panel ul {
   list-style: none;
   padding: 0;
+  margin: 0 0 20px;
 }
 
-.popup-content li {
+.panel ul li {
   margin: 10px 0;
   font-size: 16px;
 }
 
+/* Close button */
 .close-btn {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: red;
+  padding: 10px 15px;
   border: none;
   border-radius: 10px;
-  font-size: 14px;
+  background: #e74c3c;
   color: white;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #c0392b;
 }

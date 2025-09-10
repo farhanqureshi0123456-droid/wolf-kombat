@@ -1,96 +1,83 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [meat, setMeat] = useState(0);
-  const [showDailyTasks, setShowDailyTasks] = useState(false);
-  const [showSocialTasks, setShowSocialTasks] = useState(false);
+  const [showDaily, setShowDaily] = useState(false);
+  const [showSocial, setShowSocial] = useState(false);
 
-  // 🔥 Daily login reward system
+  // Daily reward system
   useEffect(() => {
+    const lastClaim = localStorage.getItem("lastClaim");
     const today = new Date().toDateString();
-    const lastLogin = localStorage.getItem("lastLogin");
 
-    if (lastLogin !== today) {
-      setMeat((prev) => prev + 100); // reward +100 meat
-      localStorage.setItem("lastLogin", today);
+    if (lastClaim !== today) {
+      setMeat((prev) => prev + 100);
+      localStorage.setItem("lastClaim", today);
     }
   }, []);
 
   const handleWolfClick = () => {
-    setMeat(meat + 1);
+    setMeat((prev) => prev + 1);
   };
 
   return (
-    <div className="App">
-      {/* Meat Counter */}
-      <div className="counter">
-        <span className="meat-icon">🥩</span>
-        <span className="meat-count">{meat}</span>
-      </div>
+    <div className="game-container">
+      <h1 className="title">🐺 Wolf Kombat 🐺</h1>
 
-      {/* Wolf Tapping Button */}
+      <p className="counter">
+        🥩 <span>{meat}</span>
+      </p>
+
       <div className="wolf-container">
         <div className="tap-button" onClick={handleWolfClick}>
           <img src="/wolf.png" alt="Wolf" className="wolf" />
         </div>
+        <p className="tap-text">Tap the Wolf!</p>
       </div>
-      <p className="tap-text">Tap the Wolf!</p>
 
-      {/* Section Buttons */}
       <div className="button-container">
         <button
           className="section-button daily"
-          onClick={() => setShowDailyTasks(true)}
+          onClick={() => setShowDaily(true)}
         >
           📅 Daily Tasks
         </button>
         <button
           className="section-button social"
-          onClick={() => setShowSocialTasks(true)}
+          onClick={() => setShowSocial(true)}
         >
           🌐 Social Tasks
         </button>
       </div>
 
       {/* Daily Tasks Panel */}
-      {showDailyTasks && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>📅 Daily Tasks</h2>
-            <ul>
-              <li>✅ Login Bonus (+100 🥩)</li>
-              <li>▶️ Watch Ad (+50 🥩)</li>
-              <li>📤 Share Game (+30 🥩)</li>
-            </ul>
-            <button
-              className="close-btn"
-              onClick={() => setShowDailyTasks(false)}
-            >
-              Close
-            </button>
-          </div>
+      {showDaily && (
+        <div className="panel">
+          <h2>📅 Daily Tasks</h2>
+          <ul>
+            <li>✅ Login Bonus (+100 🥩)</li>
+            <li>🎥 Watch Ad (+200 🥩)</li>
+            <li>🔄 Share Game (+100 🥩)</li>
+          </ul>
+          <button className="close-btn" onClick={() => setShowDaily(false)}>
+            Close
+          </button>
         </div>
       )}
 
       {/* Social Tasks Panel */}
-      {showSocialTasks && (
-        <div className="popup">
-          <div className="popup-content">
-            <h2>🌐 Social Tasks</h2>
-            <ul>
-              <li>👥 Invite Friend (+100 🥩)</li>
-              <li>📱 Join Telegram (+50 🥩)</li>
-              <li>🐦 Follow Twitter (+30 🥩)</li>
-            </ul>
-            <button
-              className="close-btn"
-              onClick={() => setShowSocialTasks(false)}
-            >
-              Close
-            </button>
-          </div>
+      {showSocial && (
+        <div className="panel">
+          <h2>🌐 Social Tasks</h2>
+          <ul>
+            <li>👥 Invite a Friend</li>
+            <li>📢 Join Telegram</li>
+            <li>🐦 Follow Twitter</li>
+          </ul>
+          <button className="close-btn" onClick={() => setShowSocial(false)}>
+            Close
+          </button>
         </div>
       )}
     </div>
