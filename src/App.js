@@ -57,8 +57,8 @@ function App() {
           <h2>📅 Daily Tasks</h2>
           <ul>
             <li>✅ Login Bonus (+100 🥩)</li>
-            <li>🎥 Watch Ad (+200 🥩)</li>
-            <li>🔄 Share Game (+100 🥩)</li>
+            <li>🎥 Watch Ad</li>
+            <li>🔄 Share Game</li>
           </ul>
           <button className="close-btn" onClick={() => setShowDaily(false)}>
             Close
