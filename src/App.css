@@ -14,22 +14,24 @@ body {
   width: 100%;
   max-width: 480px;   /* limit size on large screens */
   height: 100vh;      /* always fit screen height */
-  background: #222;
+  background: #680e0e;
   border: 3px solid #444;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;   /* center vertically */
+  align-items: center;       /* center horizontally */
   overflow: hidden;
   position: relative;
+  text-align: center;
 }
 
 /* Title */
 .title {
   color: #fff;
   font-size: 28px;
-  margin-top: 10px;
+  margin: 10px 0;
   text-align: center;
 }
 
@@ -39,6 +41,7 @@ body {
   font-size: 40px;
   font-weight: bold;
   margin: 15px 0;
+  text-align: center;
 }
 
 /* Wolf button container */
@@ -54,6 +57,7 @@ body {
   transition: transform 0.15s ease, box-shadow 0.2s ease;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.6);
   user-select: none;   /* prevent selection */
+  margin: 20px auto;
 }
 
 .tap-button:active {
@@ -63,13 +67,12 @@ body {
 
 /* Wolf image */
 .wolf {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: auto;
   border-radius: 50%;
-  user-select: none;   /* disable selection */
+  user-select: none;    /* disable selection */
   pointer-events: none; /* stop blue highlight */
 }
-
 
 /* Tap text */
 .tap-text {
@@ -82,8 +85,9 @@ body {
 /* Buttons below */
 .button-container {
   display: flex;
+  justify-content: center;
   gap: 15px;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .section-button {
